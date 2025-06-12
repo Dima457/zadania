@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сравнение слов</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        .form-container {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Проверка слов</h1>
+
+<div class="form-container">
+    <h2>Даны два слова. Проверьте, что первые буквы этих слов совпадают.</h2>
+    <input type="text" id="word1" placeholder="Введите первое слово">
+    <input type="text" id="word2" placeholder="Введите второе слово">
+    <button onclick="compareFirstLetters()">Проверить</button>
+    <div class="result" id="firstLetterResult"></div>
+</div>
+
+<hr>
+
+<div class="form-container">
+    <h2>Дано слово. Получите его последнюю букву. 
+        Если слово заканчивается на мягкий знак, то получите предпоследнюю букву.</h2>
+    <input type="text" id="word3" placeholder="Введите слово">
+    <button onclick="getLastLetter()">Получить букву</button>
+    <div class="result" id="lastLetterResult"></div>
+</div>
+
+<script>
+    function compareFirstLetters() {
+        let a = document.getElementById('word1').value;
+        let b = document.getElementById('word2').value;
+        let result = document.getElementById('firstLetterResult');
+
+        if (a[0] === b[0]) {
+            result.innerHTML = 'Первые буквы совпадают!';
+        } else {
+            result.innerHTML = 'Первые буквы не совпадают!';
+        }
+    }
+
+    function getLastLetter() {
+        let c = document.getElementById('word3').value;
+        let result = document.getElementById('lastLetterResult');
+
+        if (c[c.length - 1] === 'ь') {
+            result.innerHTML = 'Предпоследняя буква: ' + c[c.length - 2];
+        } else {
+            result.innerHTML = 'Последняя буква: ' + c[c.length - 1];
+        }
+    }
+</script>
+
+</body>
+</html>
