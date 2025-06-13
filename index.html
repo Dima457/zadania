@@ -5,46 +5,149 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Сравнение слов</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-        h1 {
-            color: #333;
-        }
-        .form-container {
-            margin-bottom: 20px;
-            padding: 15px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        input[type="text"] {
-            width: 80%;
-            padding: 10px;
-            margin: 5px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        button {
-            padding: 10px 15px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #218838;
-        }
-        .result {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: #e9ecef;
-            border-radius: 5px;
-        }
+        /* Базовые стили для всех устройств */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    min-height: 100vh;
+}
+
+/* Контейнер для контента */
+.container {
+    padding: 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.form-container {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 15px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1rem;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+.result {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #e9ecef;
+    border-radius: 5px;
+    word-break: break-word;
+}
+
+/* Медиа-запросы для разных размеров экранов */
+
+/* Планшеты (768px и выше) */
+@media (min-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    input[type="text"] {
+        width: 70%;
+        margin-right: 10px;
+        margin-bottom: 0;
+        display: inline-block;
+    }
+    
+    button {
+        width: auto;
+        display: inline-block;
+    }
+    
+    .form-row {
+        display: flex;
+        align-items: center;
+    }
+}
+
+/* Ноутбуки (992px и выше) */
+@media (min-width: 992px) {
+    .container {
+        padding: 20px;
+    }
+    
+    .form-container {
+        padding: 20px;
+    }
+    
+    input[type="text"] {
+        width: 60%;
+    }
+}
+
+/* Большие экраны (1200px и выше) */
+@media (min-width: 1200px) {
+    .container {
+        padding: 30px;
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* Особые стили для очень маленьких устройств (меньше 400px) */
+@media (max-width: 400px) {
+    body {
+        font-size: 14px;
+    }
+    
+    button {
+        padding: 8px 10px;
+    }
+    
+    .form-container, .result {
+        padding: 10px;
+    }
+}
+
+/* Портретный режим мобильных устройств */
+@media (max-width: 767px) and (orientation: portrait) {
+    h1 {
+        text-align: center;
+    }
+}
+
+/* Ландшафтный режим мобильных устройств */
+@media (max-width: 767px) and (orientation: landscape) {
+    .form-container {
+        padding: 10px;
+    }
+}
     </style>
 </head>
 <body>
@@ -92,6 +195,269 @@
             result.innerHTML = 'Последняя буква: ' + c[c.length - 1];
         }
     }
+</script>
+<hr>
+
+<div class="form-container">
+    <h2>Дано число. Выведите  первую цифру этого числа.</h2>
+    <input type="text" id="number" placeholder="Введите число">
+    <button onclick="compareFirstNumber()">Проверить</button>
+    <div class="result" id="numberResult"></div>
+</div>
+ <script>
+    function compareFirstNumber(){
+        let number = document.getElementById('number').value;
+        let numberResult = document.getElementById('numberResult');
+        let stringNumber = String(number);
+        numberResult.innerHTML = Number(number[0]);
+    }
+ </script>
+ <hr>
+
+<div class="form-container">
+    <h2>Дано число. Выведите  последнюю цифру этого числа.</h2>
+    <input type="text" id="LastNumber" placeholder="Введите число">
+    <button onclick="compareLastNumber()">Проверить</button>
+    <div class="result" id="LastNumberResult"></div>
+</div>
+  <script>
+    function compareLastNumber(){
+        let LastNumber = document.getElementById('LastNumber').value;
+        let LastNumberResult = document.getElementById('LastNumberResult');
+        let stringLastNumber = String(LastNumber);
+        LastNumberResult.innerHTML = Number(LastNumber[LastNumber.length-1]);
+    }
+ </script>
+ <hr>
+
+<div class="form-container">
+    <h2>Дано число. Выведите  сумму первой и последней цифры этого числа.</h2>
+    <input type="text" id="OurNumber" placeholder="Введите  число">
+    <button onclick="SumOurNumber()">Проверить</button>
+    <div class="result" id="SumNumber"></div>
+</div>
+  <script>
+    function SumOurNumber(){
+        let OurNumber = document.getElementById('OurNumber').value;
+        let SumNumber = document.getElementById('SumNumber');
+        let stringSumNumber = String(OurNumber);
+        let num1 =Number(OurNumber[0]);
+        let num2 =Number(OurNumber[OurNumber.length-1]);
+        SumNumber.innerHTML = num1+num2;
+    }
+ </script>
+ <hr>
+
+<div class="form-container">
+    <h2>Дано число. Выведите количество цифр в этом числе.</h2>
+    <input type="text" id="Number_4" placeholder="Введите первое число">
+    <button onclick="countNumber_4()">Проверить</button>
+    <div class="result" id="EnnerCountNumber_4"></div>
+</div>
+  <script>
+    function countNumber_4(){
+        let Number_4 = document.getElementById('Number_4').value;
+        let EnnerCountNumber_4 = document.getElementById('EnnerCountNumber_4');
+        let stringNumber_4 = String(Number_4);
+       EnnerCountNumber_4.innerHTML = stringNumber_4.length;
+    }
+ </script>
+ <hr>
+ <div class="form-container">
+    <h2>Даны два числа. Проверьте, что первые цифры этих чисел совпадают.</h2>
+    <input type="text" id="NumberOne" placeholder="Введите первое число">
+    <input type="text" id="NumberTwo" placeholder="Введите второе число">
+    <button onclick="compareIdentical()">Проверить</button>
+    <div class="result" id="OutputCompareIdentical"></div>
+</div>
+<script>
+    function compareIdentical() {
+        let NumberOne = document.getElementById('NumberOne').value;
+        let NumberTwo = document.getElementById('NumberTwo').value;
+        let OutputCompareIdentical = document.getElementById('OutputCompareIdentical');
+
+        if ( String(NumberOne[0]) === String(NumberTwo[0])) {
+            OutputCompareIdentical.innerHTML = 'Первые цифры совпадают!';
+        } else {
+            OutputCompareIdentical.innerHTML = 'Первые цифры не совпадают!';
+        }
+    }
+</script>
+<hr>
+
+ <div class="form-container">
+    <h2>Дана строка. 
+        Если в этой строке более одного символа, выведите предпоследний символ этой строки.</h2>
+    <input type="text" id="string" placeholder="Введите строку">
+    <button onclick="comparestring()">Проверить</button>
+    <div class="result" id="resultString"></div>
+</div>
+<script>
+    function comparestring() {
+        let string = document.getElementById('string').value;
+        let resultString = document.getElementById('resultString');
+
+        if ( string.length>1) {
+            resultString.innerHTML = string[string.length-2];
+        } else {
+            resultString.innerHTML = 'всего один символ'
+        }
+    }
+</script>
+<hr>
+ <div class="form-container">
+    <h2>Даны два целых числа. Проверьте, что первое число без остатка делится на второе.</h2>
+    <input type="text" id="NumberOne_6" placeholder="Введите первое число">
+    <input type="text" id="NumberTwo_6" placeholder="Введите второе число">
+    <button onclick="Division()">Проверить</button>
+    <div class="result" id="ResultDivision"></div>
+</div>
+<script>
+    function Division() {
+        let NumberOne_6 = document.getElementById('NumberOne_6').value;
+        let NumberTwo_6 = document.getElementById('NumberTwo_6').value;
+        let ResultDivision = document.getElementById('ResultDivision');
+
+        if (NumberOne_6 % NumberTwo_6 === 0 ) {
+            ResultDivision.innerHTML = NumberOne_6 / NumberTwo_6;
+        } else {
+            ResultDivision.innerHTML = 'Not division';
+        }
+    }
+</script>
+<hr>
+ <div class="form-container">
+    <h2>Выведите   все целые числа до числа,который введет пользователь.</h2>
+     <input type="text" id="NumberOne_7" placeholder="Введите число">
+    <button onclick="OutputNumbers()">начать вывод</button>
+    <div class="result" id="outPut"></div>
+</div>
+
+<script>
+function OutputNumbers() {
+    let NumberOne_7 = document.getElementById('NumberOne_7').value;
+    let outPut = document.getElementById('outPut');
+    let numbers = []; // Создаем массив для чисел
+    
+    for(let i = 1; i <= NumberOne_7; i++) {
+        numbers.push(i); // Добавляем каждое число в массив
+    }
+    
+    outPut.innerHTML = numbers.join(', '); // Выводим через запятую
+}
+</script>
+ <hr>
+ <div class="form-container">
+    <h2>Выведите  все целые числа от -100 до числа который введет пользователь (в меньшую сторону вводить нельзя).</h2>
+     <input type="text" id="NumberOne_8" placeholder="Введите число">
+    <button onclick="OutputNumbers_1()">начать вывод</button>
+    <div class="result" id="outPut_1"></div>
+</div>
+
+<script>
+function OutputNumbers_1() {
+    let NumberOne_8 = document.getElementById('NumberOne_8').value;
+    let outPut_1 = document.getElementById('outPut_1');
+    let numbers_1 = []; // Создаем массив для чисел
+    
+    for(let i = -100; i <= NumberOne_8; i++) {
+        numbers_1.push(i); // Добавляем каждое число в массив
+    }
+    
+    outPut_1.innerHTML = numbers_1.join(', '); // Выводим через запятую
+}
+</script>
+<hr>
+ <div class="form-container">
+    <h2>Выведите   все целые числа от 100 до числа которое введет 
+        пользователь(в меньшую сторону вводить нельзя).</h2>
+     <input type="text" id="NumberOne_9" placeholder="Введите число">
+    <button onclick="OutputNumbers_2()">начать вывод</button>
+    <div class="result" id="outPut_2"></div>
+</div>
+
+<script>
+function OutputNumbers_2() {
+    let NumberOne_9 = document.getElementById('NumberOne_9').value;
+    let outPut_2 = document.getElementById('outPut_2');
+    let numbers_2 = []; // Создаем массив для чисел
+    
+    for(let i = 100; i >= NumberOne_9; i--) {
+        numbers_2.push(i); // Добавляем каждое число в массив
+    }
+    
+    outPut_2.innerHTML = numbers_2.join(', '); // Выводим через запятую
+}
+</script>
+<hr>
+<div class="form-container">
+    <h2>Выведите все четные числа из промежутка от 1 до числа которое введет пользователь.</h2>
+    <input type="number" id="NumberOne_10" placeholder="Введите число">
+    <button onclick="OutputNumbers_3()">начать вывод</button>
+    <div class="result" id="outPut_3"></div>
+</div>
+
+<script>
+function OutputNumbers_3() {
+    
+    let inputNumber = parseInt(document.getElementById('NumberOne_10').value);
+    let outPut_3 = document.getElementById('outPut_3');
+    
+    
+    if (isNaN(inputNumber)) {
+        outPut_3.innerHTML = "Пожалуйста, введите число!";
+        return;
+    }
+    
+    let evenNumbers = []; 
+    
+    for(let i = 1; i <= inputNumber; i++) {
+        // Проверяем чётность
+        if (i % 2 === 0) {
+            evenNumbers.push(i); 
+        }
+    }
+    
+    
+    outPut_3.innerHTML = evenNumbers.length > 0 
+        ? "Чётные числа: " + evenNumbers.join(', ') 
+        : "В этом диапазоне нет чётных чисел";
+}
+</script>
+<hr>
+<div class="form-container">
+    <h2>Выведите все числа кратные трем в промежутке от 1 до числа котрое введет пользователь.</h2>
+    <input type="number" id="NumberOne_11" placeholder="Введите число">
+    <button onclick="OutputNumbers_4()">начать вывод</button>
+    <div class="result" id="outPut_4"></div>
+</div>
+
+<script>
+function OutputNumbers_4() {
+    
+    let NumberOne_11 = parseInt(document.getElementById('NumberOne_11').value);
+    let outPut_4 = document.getElementById('outPut_4');
+    
+    
+    if (isNaN(NumberOne_11)) {
+        outPut_4.innerHTML = "Пожалуйста, введите число!";
+        return;
+    }
+    
+    let evenNumbers_1 = []; 
+    
+    for(let i = 1; i <= NumberOne_11; i++) {
+        
+        if (i % 3 === 0) {
+            evenNumbers_1.push(i); 
+        }
+    }
+    
+    
+    outPut_4.innerHTML = evenNumbers_1.length > 0 
+        ? "кратные числа: " + evenNumbers_1.join(', ') 
+        : "В этом диапазоне нет кратных чисел";
+}
 </script>
 
 </body>
