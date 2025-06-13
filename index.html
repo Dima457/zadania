@@ -459,6 +459,103 @@ function OutputNumbers_4() {
         : "В этом диапазоне нет кратных чисел";
 }
 </script>
+<hr>
+<div class="form-container">
+    <h2>Найдите сумму всех целых чисел от 1 числа введеным пользователем.</h2>
+    <input type="number" id="NumberOne_12" placeholder="Введите число">
+    <button onclick="OutputNumbers_5()">начать вывод</button>
+    <div class="result" id="outPut_5"></div>
+</div>
+
+<script>
+function OutputNumbers_5() {
+    
+    let NumberOne_12 = parseInt(document.getElementById('NumberOne_12').value);
+    let outPut_5 = document.getElementById('outPut_5');
+    let sum = 0;
+    
+    for(let i = 1; i <= NumberOne_12; i++) {
+         sum+=i;
+      
+    }
+    
+    
+    outPut_5.innerHTML =  sum;
+       
+}
+</script>
+<hr>
+<div class="form-container">
+    <h2>Найдите сумму всех целых четных чисел в промежутке от 1 до числа введеным пользователем.</h2>
+    <input type="number" id="NumberOne_13" placeholder="Введите число">
+    <button onclick="OutputNumbers_6()">начать вывод</button>
+    <div class="result" id="outPut_6"></div>
+</div>
+
+<script>
+function OutputNumbers_6() {
+    let NumberOne_13 = parseInt(document.getElementById('NumberOne_13').value);
+    let outPut_6 = document.getElementById('outPut_6');
+    let sum_1 = 0;
+    
+    for(let i = 1; i <= NumberOne_13; i++) {
+        if(i%2===0){
+            sum_1+=i;
+        }
+      
+    }
+    
+    
+    outPut_6.innerHTML =  sum_1;    
+}
+</script>
+<hr>
+<div class="form-container">
+    <h2>Найдите сумму всех целых нечетных чисел в промежутке от 1 до введеного пользователем.</h2>
+    <input type="number" id="NumberOne_14" placeholder="Введите число">
+    <button onclick="OutputNumbers_7()">начать вывод</button>
+    <div class="result" id="outPut_7"></div>
+</div>
+
+<script>
+function OutputNumbers_7() {
+    let NumberOne_14 = parseInt(document.getElementById('NumberOne_14').value);
+    let outPut_7 = document.getElementById('outPut_7');
+    let sum_2 = 0;
+    
+    for(let i = 1; i <= NumberOne_14; i++) {
+        if(i%2!=0){
+            sum_2+=i;
+        }
+      
+    }
+    
+    
+    outPut_7.innerHTML =  sum_2;    
+}
+</script>
+<hr>
+ <div class="form-container">
+    <h2>Даны два целых числа. Найдите остаток от деления первого числа на второе.</h2>
+    <input type="number" id="odin" placeholder="Введите первое число">
+    <input type="number" id="dva" placeholder="Введите второе число">
+    <button onclick="Division_1()">Найти</button>
+    <div class="result" id="ResultDivision_1"></div>
+</div>
+<script>
+    function Division_1() {
+        let odin = document.getElementById('odin').value;
+        let dva = document.getElementById('dva').value;
+        let ResultDivision_1 = document.getElementById('ResultDivision_1');
+        if(Number(dva)===0){
+            ResultDivision_1.innerHTML = "Ошибка: Деление на ноль!";
+            return;
+        }
+       ResultDivision_1.innerHTML = Number(odin)%Number(dva);
+
+    }
+</script>
+
 
 </body>
 </html>
