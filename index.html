@@ -568,7 +568,7 @@ function OutputNumbers_7() {
         let OurString = document.getElementById('OurString').value;
         let StringOnTheContraryResult = document.getElementById('StringOnTheContraryResult');
         let OurStringOnTheContrary = [];
-        for(i=0;i<=OurString.length; i++){
+        for(i=1;i<=OurString.length; i++){
             OurStringOnTheContrary.push(OurString[OurString.length-i]);
         }
         StringOnTheContraryResult.innerHTML = OurStringOnTheContrary;
@@ -721,15 +721,236 @@ function OutputNumbers_7() {
         let UsersString_1 = document.getElementById('UsersString_1').value;
         let UsersStringResult_1 = document.getElementById('UsersStringResult_1');
         let hhh = String(UsersString_1);
-        let UsersStringArray_1 = hhh.split('');
+        let UsersStringArray_1 = hhh.split('')
+                                     .map(iten=>parseFloat(iten));
         UsersStringResult_1.innerHTML =UsersStringArray_1;
         
     }
     
 </script>
+<hr>
+ <div class="form-container">
+    <h2>Дано некоторое число Переверните его</h2>
+    <input type="number" id="UserNumber1" placeholder="Введите число">
+    <button onclick="UsersNumberFunction_1()">Найти</button>
+    <div class="result" id="UsersNumberResult_1"></div>
+</div>
+<script>
+    function UsersNumberFunction_1() {
+        let UserNumber1 = document.getElementById('UserNumber1').value;
+        let UsersNumberResult_1 = document.getElementById('UsersNumberResult_1');
+        let hhh_1 = String(UserNumber1);
+        let ArrayUserNumber = ' ';
+        for(i=1;i<=hhh_1.length; i++){
+            ArrayUserNumber+=hhh_1[hhh_1.length-i];
+        }
+        UsersNumberResult_1.innerHTML = parseInt(ArrayUserNumber);
+        
+    }
+   // short code 
+   // function UsersNumberFunction_1() {
+   // const num = parseInt(document.getElementById('UserNumber1').value);
+   // if (isNaN(num)) {
+    //    document.getElementById('UsersNumberResult_1').innerHTML = "Введите число!";
+     //   return;
+   // }
+    
+   // const reversed = parseInt(Math.abs(num).toString().split('').reverse().join('')) * Math.sign(num);
+  //  document.getElementById('UsersNumberResult_1').innerHTML = reversed;
+//}
+    
+</script>
+<hr>
+ <div class="form-container">
+    <h2>Дано некоторое число: Найдите сумму цифр этого числа.</h2>
+    <input type="number" id="UserNumber2" placeholder="Введите число">
+    <button onclick="UsersNumberFunction_2()">Найти</button>
+    <div class="result" id="UsersNumberResult_2"></div>
+</div>
+<script>
+    
+    function UsersNumberFunction_2() {
+        let UserNumber2 = document.getElementById('UserNumber2').value;
+        let UsersNumberResult_2 = document.getElementById('UsersNumberResult_2');
+        
+        // Проверка на пустой ввод
+        if (UserNumber2 === '') {
+            UsersNumberResult_2.innerHTML = 'Введите число!';
+            return;
+        }
+
+        let hhh_2 = String(UserNumber2);
+        let SumUserNumber = 0;
+        
+        for(let i = 0; i < hhh_2.length; i++) {
+            // Пропускаем символ "-" для отрицательных чисел
+            if (hhh_2[i] === '-') continue;
+            
+            let digit = parseInt(hhh_2[i]);
+            // Проверяем, что преобразование успешно
+            if (!isNaN(digit)) {
+                SumUserNumber += digit;
+            }
+        }
+        
+        UsersNumberResult_2.innerHTML = SumUserNumber;
+    }
 
 
 
+</script>
+<hr>
+ <div class="form-container">
+    <h2>Заполните массив целыми числами от 1 до числа введеным пользователем.</h2>
+    <input type="number" id="UserNumberArray" placeholder="Введите число">
+    <button onclick="UsersNumberFunctionArray()">Найти</button>
+    <div class="result" id="UsersNumberResultArray"></div>
+</div>
+<script>
+    
+    function UsersNumberFunctionArray() {
+        let UserNumberArray = document.getElementById('UserNumberArray').value;
+        let UsersNumberResultArray = document.getElementById('UsersNumberResultArray');
+        
+        // Проверка на пустой ввод
+        if (UserNumberArray === '') {
+            UsersNumberResultArray.innerHTML = 'Введите число!';
+            return;
+        }
+        let NewOurArray = Array.from({length: UserNumberArray}, (_, index)=>index+1);
+
+        UsersNumberResultArray.innerHTML = NewOurArray.join(" ,");
+
+    }
+
+
+
+</script>
+<hr>
+ <div class="form-container">
+    <h2>Заполните массив четными числами из промежутка от 1 дo введеным пользователем.</h2>
+    <input type="number" id="UserNumberArray_1" placeholder="Введите число">
+    <button onclick="UsersNumberFunctionArray_1()">Найти</button>
+    <div class="result" id="UsersNumberResultArray_1"></div>
+</div>
+<script>
+    
+    function UsersNumberFunctionArray_1() {
+        let UserNumberArray_1 = document.getElementById('UserNumberArray_1').value;
+        let UsersNumberResultArray_1 = document.getElementById('UsersNumberResultArray_1');
+        
+        if (!UserNumberArray_1 || UserNumberArray_1 < 2) {
+            UsersNumberResultArray_1.innerHTML = 'Введите число > 1';
+            return;
+        }
+
+        const evenNumbers = Array.from(
+            {length: Math.floor(UserNumberArray_1/2)},
+            (_, i) => (i+1)*2
+        );
+        
+
+        UsersNumberResultArray_1.innerHTML = NewOurArray_1.join(" ,");
+
+    }
+</script>
+<hr>
+ <div class="form-container">
+    <h2>введите массив с дробями(числа вводите через запятую, например 1.2, 2.3):</h2>
+    <input type="text" id="UserDecimalArray" placeholder="Введите число">
+    <h2>напишите сколько знаков после запятой должно оставаться</h2>
+    <input type="number" id="UserDecimalArray_1" placeholder="Введите число">
+    <button onclick="UsersDecimalArray_1()">Найти</button>
+    <div class="result" id="UsersDecimalResultArray_1"></div>
+</div>
+<script>
+    
+    function UsersDecimalArray_1() {
+        let UserDecimalArray = document.getElementById('UserDecimalArray').value;
+        let UserDecimalArray_1 = parseInt(document.getElementById('UserDecimalArray_1').value);
+        let UsersDecimalResultArray_1 = document.getElementById('UsersDecimalResultArray_1');
+
+         let ArrayDecimal = UserDecimalArray.split(',')
+                                        .map(item_4=>parseFloat(item_4.trim()))
+                                        .filter(item_4=>!isNaN(item_4));
+        let jjj = [];
+        
+        for(i=0;i<ArrayDecimal.length;i++){
+            jjj.push(ArrayDecimal[i].toFixed(UserDecimalArray_1));
+        }
+        UsersDecimalResultArray_1.innerHTML = jjj;
+    }
+</script>
+<hr>
+ <div class="form-container">
+    <h2>введите массив со строками. </h2>
+         <input type="text" id="ArrayUsers" placeholder="напрмер:яблоко,киви,кура">
+    <h2> Оставьте в этом массиве только те строки, 
+        которые начинаются на то что вввел пользователь</h2>
+    <input type="text" id="prefix" placeholder="Введите строку">
+    <button onclick="FoundPrefix()">Найти</button>
+    <div class="result" id="FoundPrefixResult"></div>
+</div>
+ <script>
+function FoundPrefix(){
+    let ArrayUsers = document.getElementById('ArrayUsers').value;
+    let prefix = document.getElementById('prefix').value;
+    let FoundPrefixResult = document.getElementById('FoundPrefixResult');
+   
+
+    if(!ArrayUsers||!prefix){
+        FoundPrefixResult.innerHTML =' pls enter data';
+        return;
+    }
+    let NewArrayForFoundPrefixResult = ArrayUsers.split(',')
+                                                    .map(itek=>itek.trim())
+                                                    .filter(itel=>itel!=='');
+
+    const yyy = NewArrayForFoundPrefixResult.filter(str=>str.toLowerCase().startsWith(prefix.toLowerCase()));
+         if (yyy.length === 0) {
+        FoundPrefixResult.innerHTML = 'Нет строк, начинающихся с "' + prefix + '"';
+    } else {
+         FoundPrefixResult.innerHTML = 'Результат: ' + yyy.join(', ');
+    }     
+    }
+                            
+  
+ </script>
+ <hr>
+ <div class="form-container">
+    <h2>введите массив со строками. </h2>
+         <input type="text" id="ArrayUsers_1" placeholder="напрмер:яблоко,киви,кура">
+    <h2> Оставьте в этом массиве только те строки, 
+        которые заканчиваются на то что вввел пользователь</h2>
+    <input type="text" id="prefix_1" placeholder="Введите строку">
+    <button onclick="FoundPrefix_1()">Найти</button>
+    <div class="result" id="FoundPrefixResult_1"></div>
+</div>
+ <script>
+function FoundPrefix_1(){
+    let ArrayUsers_1 = document.getElementById('ArrayUsers_1').value;
+    let prefix_1 = document.getElementById('prefix_1').value;
+    let FoundPrefixResult_1 = document.getElementById('FoundPrefixResult_1');
+   
+
+    if(!ArrayUsers_1||!prefix_1){
+        FoundPrefixResult_1.innerHTML =' pls enter data';
+        return;
+    }
+    let NewArrayForFoundPrefixResult_1 = ArrayUsers_1.split(',')
+                                                    .map(itek=>itek.trim())
+                                                    .filter(itel=>itel!=='');
+
+    const yyy_1 = NewArrayForFoundPrefixResult_1.filter(str=>str.toLowerCase().endsWith(prefix_1.toLowerCase()));
+         if (yyy_1.length === 0) {
+        FoundPrefixResult_1.innerHTML = 'Нет строк, начинающихся с "' + prefix_1 + '"';
+    } else {
+         FoundPrefixResult_1.innerHTML = 'Результат: ' + yyy_1.join(', ');
+    }     
+    }
+                            
+  
+ </script>
 </body>
 </html>
 
