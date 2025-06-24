@@ -951,6 +951,73 @@ function FoundPrefix_1(){
                             
   
  </script>
+    <hr>
+ <div class="form-container">
+    <h2>введите массив со числами </h2>
+         <input type="text" id="ArrayUsersForProcent" placeholder="введите через запятую">
+    <h2> введите на сколько процентов увеличить числа в массиве</h2>
+    <input type="number" id="procent" placeholder="Введите процент без значка %">
+    <button onclick="ProcentFound()">Найти</button>
+    <div class="result" id="FoundProcentResult"></div>
+</div>
+ <script>
+function ProcentFound(){
+    let ArrayUsersForProcent = document.getElementById('ArrayUsersForProcent').value;
+    let procent = document.getElementById('procent').value;
+    let FoundProcentResult = document.getElementById('FoundProcentResult');
+    let numbersArray = ArrayUsersForProcent.split(',').map(item => parseFloat(item.trim()));
+    let NewArrayProcent = numbersArray.map(item=> item*(1+(procent/100)));
+     FoundProcentResult.innerHTML = NewArrayProcent.join(', ');
+    }
+                            
+  
+ </script>
+ <hr>
+<div class="form-container">
+    <h2>Случайный массив чисел</h2>
+    <button onclick="generateRandomArray()">Сгенерировать массив</button>
+    <div class="result" id="randomArrayResult"></div>
+</div>
+
+<script>
+function generateRandomArray() {
+    let randomArray = [];
+    let arrayLength = 10; // Длина массива, можете изменить по желанию
+
+    for (let i = 0; i < arrayLength; i++) {
+        // Генерируем случайное число от 1 до 100
+        let randomNumber = Math.floor(Math.random() * 100) + 1;
+        randomArray.push(randomNumber);
+    }
+
+    // Отображаем результат
+    document.getElementById('randomArrayResult').innerHTML = randomArray.join(', ');
+}
+</script>
+<hr>
+ <div class="form-container">
+    <h2>Дано некоторое число:
+        Выведите  все его символы с конца. </h2>
+    <input type="number" id="fignya" placeholder="введите число">
+    <button onclick="FunctionFinya()">Найти</button>
+    <div class="result" id="FunctionFinyaResult"></div>
+</div>
+ <script>
+function FunctionFinya(){
+   let fignya = document.getElementById('fignya').value;
+   let FunctionFinyaResult = document.getElementById('FunctionFinyaResult');
+   let numberString_1 = fignya.toString(); // Преобразуем число в строку
+    let gggy = [];
+  for (let i = numberString_1.length - 1; i >= 0; i--) {
+   gggy.push(numberString_1[i]); // Выводим каждый символ с конца
+}
+    FunctionFinyaResult.innerHTML=gggy;
+    }
+                            
+  
+ </script>
+
+
 </body>
 </html>
 
